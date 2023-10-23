@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th scope="col"> Component </th>
+    <th scope="col"> Description </th>
+    <th scope="col"> Github </th>
+  </tr>
+{{ range where site.RegularPages "Section" "Components" }}
+  <tr>
+  <td>
+    <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+  </td>
+  <td>
+    {{ .Description }}
+  </td>
+  <td>
+    <a href="https://www.github.com/{{ .Params.github }}">{{ .Params.github }}</a>
+  </td>
+  </tr>
+{{ end }}
+</table>
