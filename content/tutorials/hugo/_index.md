@@ -9,11 +9,13 @@ weight: 1
 1. Download the latest Hugo binary from [here](https://github.com/gohugoio/hugo/releases) or v0.119 directly from [here](https://github.com/gohugoio/hugo/releases/download/v0.119.0/hugo_0.119.0_windows-amd64.zip).
 2. Extract the zip file to a folder of your choice. For example, `C:\Hugo\bin`.
 3. Add the path to the Hugo binary to your PATH environment variable. For example, `C:\Hugo\bin`.
-4. Search for "Edit the system environment variables" in the Windows search bar.
-5. Click on "Environment Variables...".
-6. Under "System variables", select "Path" and click "Edit...".
-7. Click "New" and add the path to the Hugo binary. For example, `C:\Hugo\bin`.
-8. Click "OK" to save the changes.
+
+    1. Search for "Edit the system environment variables" in the Windows search bar.
+    2. Click on "Environment Variables...".
+    3. Under "System variables", select "Path" and click "Edit...".
+    4. Click "New" and add the path to the Hugo binary. For example, `C:\Hugo\bin`.
+    5. Click "OK" to save the changes.
+
 4. Open a new command prompt and run `hugo version` to verify that Hugo is installed properly.
 5. You can now delete the zip file.
 
