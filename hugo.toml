@@ -78,8 +78,8 @@ anchor = "smart"
 section = ["HTML", "print", "RSS"]
 
 [params]
-copyright = "The Docsy Authors"
-privacy_policy = "https://policies.google.com/privacy"
+copyright = "Jacob Merson"
+#privacy_policy = "https://policies.google.com/privacy"
 
 # First one is picked as the Twitter card image if not set on page.
 # images = ["images/project-illustration.png"]
@@ -115,7 +115,7 @@ version = "0.0"
 #github_branch= "main"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "53d05962e7d684325"
+gcs_engine_id = "30f1855429bcc475c"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
