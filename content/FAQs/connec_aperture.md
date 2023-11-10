@@ -16,7 +16,7 @@ replace `your_username` with your RCS ID.
 
 3. Type the following command in the terminal window:
 ```bash
-ssh -X aperture01
+ssh aperture01
 ```
 
 4. When prompted, enter your RCS ID password. Or you can set up ssh on lab computers for passwordless login to the Lab computers.
