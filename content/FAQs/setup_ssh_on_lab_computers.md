@@ -19,4 +19,11 @@ ssh-copy-id username@jumpgate.scorec.rpi.edu
 ```
 replace `username` with your RCS ID.
 
+4. **For windows**, `ssh-copy-id` is not available. You can manually copy the public key to the remote computer. 
+
+    1. Open the public key file (e.g., `~/.ssh/id_rsa.pub`) in a text editor. 
+    2. Copy the contents of the file to the clipboard.
+    3. Log in to the remote computer with `ssh remote_name`.
+    4. Open the `~/.ssh/authorized_keys` file in a text editor. And paste the contents of the clipboard to the end of the file. Save the file.
+
 5. When prompted, enter the password for the remote computer. The public key will be copied to the remote computer and installed in the `~/.ssh/authorized_keys` file. You can now log in to the remote computer without entering a password.
