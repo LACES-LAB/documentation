@@ -27,3 +27,27 @@ replace `username` with your RCS ID.
     4. Open the `~/.ssh/authorized_keys` file in a text editor. And paste the contents of the clipboard to the end of the file. Save the file.
 
 5. When prompted, enter the password for the remote computer. The public key will be copied to the remote computer and installed in the `~/.ssh/authorized_keys` file. You can now log in to the remote computer without entering a password.
+
+**Note:** If it asks for a password even after following the above steps, it might be due to the permissions on the `.ssh` directory or the `authorized_keys` file. Make sure the permissions are set correctly as follows:
+
+```bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/authorized_keys
+```
+this problem is relatively rare though.
+
+Another common problem is the key is not added to the ssh agent or the agent is not running. The follwing steps can be followed to add the key to the agent and start the agent (for windows you need to use elevated powershell, i.e. run as administrator. Linux commands are similar to this):
+```bash
+# By default the ssh-agent service is disabled. Configure it to start automatically.
+# Make sure you're running as an Administrator.
+Get-Service ssh-agent | Set-Service -StartupType Automatic
+
+# Start the service
+Start-Service ssh-agent
+
+# This should return a status of Running
+Get-Service ssh-agent
+
+# Now load your key files into ssh-agent
+ssh-add $env:USERPROFILE\.ssh\id_ed25519
+```
