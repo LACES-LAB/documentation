@@ -15,3 +15,15 @@ VSCode creates a `.vscode-server` directory in your home directory when you conn
 replace `machine_name1` and `machine_name2` with the name of the machine you are using (e.g. `romulus`). This will create the `.vscode-server` directory in the specified location instead of your home directory.
 
 You can also do the same thing on settings UI by searching for `remote.SSH.serverInstallPath` and changing the value for each machine.
+
+### Change Chrome data directory to lore
+If you are using Google Chrome on SCOREC machines, you can change the cache directory to lore to save space in your home directory. To do this, run the following command in the terminal:
+```bash
+mkdir /lore/your-username/path/to/cache/directory
+```
+change the path to the directory you want to use for cache. Then, run the following command:
+**You have to be connected with X11 forwarding to run this command or directly run it on the machine.**
+```bash
+google-chrome-stable --user-data-dir=/lore/your-username/path/to/cache/directory
+```
+This will save about half a GB of space in your home directory.
