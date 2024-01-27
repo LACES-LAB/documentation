@@ -36,7 +36,7 @@ chmod 600 ~/.ssh/authorized_keys
 ```
 this problem is relatively rare though.
 
-Another common problem is the key is not added to the ssh agent or the agent is not running. The follwing steps can be followed to add the key to the agent and start the agent (for windows you need to use elevated powershell, i.e. run as administrator. Linux commands are similar to this):
+Another common problem is the key is not added to the ssh agent or the agent is not running. The follwing steps can be followed to add the key to the agent and start the agent (for windows you need to use elevated powershell, i.e. run as administrator.):
 ```bash
 # By default the ssh-agent service is disabled. Configure it to start automatically.
 # Make sure you're running as an Administrator.
@@ -51,3 +51,13 @@ Get-Service ssh-agent
 # Now load your key files into ssh-agent
 ssh-add $env:USERPROFILE\.ssh\id_ed25519
 ```
+
+On Linux you can use the following commands to start the agent and add the key:
+```bash
+# start the agent
+eval `ssh-agent -s`
+
+# add the key
+ssh-add ~/.ssh/id_rsa
+```
+The first command can also be added to the `.bashrc` file so that the agent is started automatically when you open a terminal.
