@@ -80,5 +80,13 @@ I used the docker image of STELOPT to run Beams3D where all the necessary tools 
 ```bash
     docker run -it -u root zhucaoxiang/stellopt
 ```
-3. Consult docker documentation for further usage of the image.
-4. There are two tutorials for Beams3D here: [Beams3D Tutorials](https://princetonuniversity.github.io/STELLOPT/BEAMS3D#tutorials). They worked on the dokcer image for my case.
+3. The NAG library is also needed to be installed but it is a proprietary software. A trial version(for 30 days) can be found [here](https://nag.com/nag-library/). Installation is very straightforward. Just follow the instructions given in the website.
+4. After nag installation, add NAG to the environment using the following command:
+```bash
+    source /home/NAG/nll6i293bl/scripts/nagvars.sh int64 vendor dynamic
+```
+5. Then, follow the [Beams3D tutorial](https://princetonuniversity.github.io/STELLOPT/BEAMS3D%20NCSX%20Deposition%20Example.html) to run Beams3D. I used the following command after editing the input file.
+```bash
+    xbeams3d -vmec ncsx_c09r00_free_birth -coil coils.c09r00 -vessel NCSX_wall_nbiport_acc.dat -depo
+```
+6. It will create a `.h5` file and it can be read by python. Magnetic field data is read in this [Jupyter Notebook](https://gist.github.com/Fuad-HH/fce7e3a7161920a0aaf1bec3825c5040)
