@@ -31,6 +31,8 @@ module load gcc/11.2.0 mpich/4.0.2
 module load fftw/3.3.10
 module load cuda/11.4
 module load cmake/3.20
+# if you want to use Symmetrix with it
+module load simmetrix-simmodsuite/2023.1-230907dev # or any other version
 ```
 2. Clone the repository:
 ```bash
@@ -46,13 +48,16 @@ cmake -S . -B build \
      -DGmsh_INCLUDE_DIRS=/lore/<yourUsername>/Gmsh/include/ \
      -DKokkos_DIR=/lore/<yourUsername>/Kokkos/kokkosInstall/lib64/cmake/Kokkos \
      -DCMAKE_BUILD_TYPE=Debug \
-     -DOmega_h_DBG=OFF
+     -DOmega_h_DBG=OFF \
+     # if you want to compile with symmetrix
+     -DOmega_h_USE_SimModSuite=on \
+     -DSIM_MPI=mpich4.0.2 
 ```
 **Important notes on the flags:** Change the `CMAKE_INSTALL_PREFIX` to your preferred directory. If you want to use Gmsh, change the `Gmsh_INCLUDE_DIRS` to the directory where you have Gmsh compiled and installed. If you don't, remove the line. If you want to use CUDA or OpenMP, change the `Kokkos_DIR` to the directory where you have Kokkos installed. _CUDA/OpenMP will depend on the Kokkos installation._ If you don't want to use CUDA or OpenMP, remove the line. If you want to compile in release mode, change the [`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html) to `Release` or `RelWithDebInfo`.
 
 4. Build and install:
 ```bash
-sh <yourConfigFile>
+. <yourConfigFile>
 cd build
 make -j8 install
 ```
