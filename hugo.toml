@@ -1,6 +1,21 @@
 baseURL = "https://laces-lab.github.io/documentation/"
 title = "LACES Docs"
 
+
+[[menu.main]]
+  name = "Edit on Github"
+  weight = 10
+  color = "white"
+  url = "https://github.com/LACES-LAB/documentation"
+  pre = "<i class='fa-brands fa-github'></i>"
+
+[[menu.main]]
+  name = "LACES Home"
+  weight = 9
+  url = "https://laces-lab.github.io/"
+  pre = "<i class='fa-solid fa-house'></i>"
+
+
 # Language settings
 contentDir = "content"
 defaultContentLanguage = "en"

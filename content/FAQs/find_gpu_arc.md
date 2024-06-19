@@ -17,11 +17,29 @@ title: Find the NVIDIA GPU architecture
 |                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
 ```
-3. From the output, you can see that the GPU is **Quadro P1000**. Now, go to the [NVIDIA website](https://developer.nvidia.com/cuda-gpus) and find the GPU architecture. In this case, the GPU architecture is **Pascal**.
+3. From the output, you can see that the GPU is **Quadro P1000**. Now, go to the [NVIDIA website](https://developer.nvidia.com/cuda-gpus) and find the GPU **Compute Capability**. In this case, the compute capability is **6.1**.
 
-4. Also look for the **CUDA Capability**. In this case, the CUDA capability is **6.1**.
+4. Each major version of Compute Capability has a corresponding **architecture**. This table
+gives the mapping between the Compute Capability and the architecture:
+
+| Compute Capability | Architecture |
+|--------------------|--------------|
+| 5.x                | Maxwell      |
+| 6.x                | Pascal       |
+| 7.x                | Volta        |
+| 7.5                | Turing       |
+| 8.x                | Ampere       |
+| 8.9                | Ada          |
+| 9.x                | Hopper       |
+| 10.x               | Balackwell   |
+
+Since NVIDIA changes the link to the GPU architecture documentation, it's difficult to provide a direct link where you can find the above information. However, look here for more
+information:
+
+[Compute Capabilities](https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#compute-capabilities)
+
+[CUDA Wikipedia](https://en.wikipedia.org/wiki/CUDA)
+
 
 5. Therefore, for this GPU, the architecture is **Pascal** and the CUDA capability is **6.1**. And for pcms, you will write `PASCAL61`.
-
-6. If you do not find the GPU listed in the NVIDIA website, then you can also use this wikipedia [page](https://en.wikipedia.org/wiki/CUDA#GPUs_supported) to find the GPU architecture.
 
