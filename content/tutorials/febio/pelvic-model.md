@@ -28,15 +28,23 @@ title: CAD Modeling Instructions for Pelvic Hip Fracture
 1. To remove the right half of the sacrum: Place a **Datum CSYS** in the middle of the sacrum shell using **Home > Datum CSYS** and position the datum such that there is left-right symmetry.
 2. Trim the body using **Trim Body** command after selecting the appropriate plane. You may have to select the **Reverse Direction** option to leave the desired left half remaining.
     - It is advised to trim the cancellous and cortical parts separately.
-3. To add a fracture to the sacrum, create another **Datum CSYS**, place it where shear would occur, and apply the **Split Body** command using the newly created datum.
-4. Save as a `.prt`.
+3. Save as a `.prt`.
 
 ## Step 5: Facet Cleanup and Hole Insertion
 1. In NX, **Open** the cartilage (`m11_cg_jnt_lsi.obj`) and save it as a part file.
 2. Create a new model in Siemens NX and ensure that units are in mm.
 2. Import the Sacrum, Cartilage, and Pelvis parts.
 2. Use **Facet > Cleanup Facet Body** to clean mesh.
-3. Insert a hole:
+3. Delete all minor extra parts that may appear. 
+5. Add a fracture to the sacrum (Note: trim body command would be more efficient, but has proven to be problematic with regard to the meshing)
+   -	First, duplicate the entire geometry as it currently exists and make sure its copy is superimposed upon the original
+   -	Create another **Datum CSYS**, place it where shear would occur
+   -	Create a sketch of a large square of arbitrary size, as long as it encompasses the geometry
+   -	Extrude it in one direction (right if observing from the front) such that it covers half of the sacrum and all of the pelvis
+   -	Use the subtract command to subtract the box from the part of the bone (choose one of the superimposed copies) which it overlaps 
+   -	Repeat the process for the other half, this time deleting from the other superimposed half
+   -	This will leave you with one right side and one left side, leaving you with the geometry you had after Step 4, but with a “fracture”
+4. Insert a hole:
    - Place a **Datum CSYS** and then **Create Sketch on Plane**.
    - Draw a rectangle going into/through sacrum (~100mm length, 3.66 – 3.67mm radius).
    - **Revolve** the rectangle

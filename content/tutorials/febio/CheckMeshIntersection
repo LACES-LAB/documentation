@@ -1,0 +1,47 @@
+import re
+from collections import defaultdict
+
+def parse_mesh_file(file_name):
+    with open(file_name, 'r') as file:
+        data = file.readlines()
+
+    elsets = defaultdict(set)
+    current_elset = None
+
+    for line in data:
+        if line.startswith('*Element'):
+            current_elset = re.search(r'elset=(\w+)', line).group(1)
+        else:
+            elements = list(map(int, line.split(',')[1:]))
+            elsets[current_elset].update(elements)
+
+    return elsets
+
+def check_intersections(elsets):
+    all_elements = {}
+    intersections = []
+
+    for elset, elements in elsets.items():
+        for element in elements:
+            if element in all_elements:
+                intersections.append((element, all_elements[element], elset))
+            else:
+                all_elements[element] = elset
+
+    return intersections
+
+def main():
+    file_name = 'entiremodelmesh7mm.txt' #replace with file name. Make sure to delete the first several thousand lines leading up to the first line that contains *Element, elset=region
+    elsets = parse_mesh_file(file_name)
+    intersections = check_intersections(elsets)
+
+    if intersections:
+        print("Intersections found:")
+        for element, elset1, elset2 in intersections:
+            print(f"Element {element} is in both {elset1} and {elset2}")
+    else:
+        print("No intersections found.")
+
+if __name__ == "__main__":
+    main()
+
