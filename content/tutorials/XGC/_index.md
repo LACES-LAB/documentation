@@ -21,34 +21,48 @@ The master (latest commit `5d2cb943a`) or `d2neutral` can be installed with [`sp
 spack:
   # add package specs to the `specs` list
   specs:
-  - kokkos@4.2.01+openmp+serial
-  - cabana@0.5.0
+  - kokkos@4+openmp+serial
+  - cabana@0.7.0
   - fftw
-  - petsc@3.15.0+fortran+metis+scalapack
-  - adios2@2.8.0
   - netlib-lapack
   - googletest
+  - libszip
+  - hdf5+hl+mpi
+  - netcdf-c+mpi
+  - netcdf-fortran
+  - catch2
+  - kokkos-kernels
+  - cmake
+  - adios2@2.8.0
+  - python@3.9
+  - petsc@3.15.0+fortran+metis+scalapack ^python@3.9
   view: true
   concretizer:
     unify: true
-  packages:
-    python:
-      externals:
-      - spec: python@3.9.18
-        prefix: /usr
-      buildable: false
 ```
 
 with this compiler configuration:
 ```yaml
-gcc@11.4.1:
-        paths:
-                cc = /usr/bin/gcc
-                cxx = /usr/bin/g++
-                f77 = /usr/bin/gfortran
-                fc = /usr/bin/gfortran
-        modules  = []
-        operating system  = rhel9
+packages:
+  cuda:
+    externals:
+    - spec: cuda@12.1.105
+      prefix: /opt/scorec/spack/rhel9/v0201_4/install/linux-rhel9-x86_64/gcc-12.3.0/cuda-12.1.1-zxa4mskqvbkiefzkvnuatlq7skxjnzt6
+    buildable: false
+  mpich:
+    externals:
+    - spec: mpich@4.1.1+hydra+libxml2+romio~verbs+wrapperrpath device=ch4 netmod=ofi pmi=pmi
+      prefix: /opt/scorec/spack/rhel9/v0201_4/install/linux-rhel9-x86_64/gcc-12.3.0/mpich-4.1.1-xpoyz4tqgfxtrm6m7qq67q4ccp5pnlre
+    buildable: false
+  gcc:
+    externals:
+    - spec: gcc@12.3.0 languages:='c,c++,fortran'
+      prefix: /opt/scorec/spack/rhel9/v0201_4/install/linux-rhel9-x86_64/gcc-7.4.0/gcc-12.3.0-iil3lnovyknyxf7pec36wljem3fntjd5
+      extra_attributes:
+        compilers:
+          c: /opt/scorec/spack/rhel9/v0201_4/install/linux-rhel9-x86_64/gcc-7.4.0/gcc-12.3.0-iil3lnovyknyxf7pec36wljem3fntjd5/bin/gcc
+          cxx: /opt/scorec/spack/rhel9/v0201_4/install/linux-rhel9-x86_64/gcc-7.4.0/gcc-12.3.0-iil3lnovyknyxf7pec36wljem3fntjd5/bin/g++
+          fortran: /opt/scorec/spack/rhel9/v0201_4/install/linux-rhel9-x86_64/gcc-7.4.0/gcc-12.3.0-iil3lnovyknyxf7pec36wljem3fntjd5/bin/gfortran
 ```
 
 Run `spack concretize -f` and `spack install` to install the packages. Now, before installing XGC, the following changes have to be made to the source code:
