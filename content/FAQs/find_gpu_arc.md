@@ -1,7 +1,29 @@
 ---
 title: Find the NVIDIA GPU architecture
 ---
-1. Go the the terminal and type `nvidia-smi`
+
+## CUDA >= 11.6
+
+1. Go to the terminal and type `nvidia-smi --query-gpu=compute_cap` to query the compute capability.
+2. The output will look like this:
+
+```bash
+compute_cap
+8.6
+```
+
+3. Go to the terminal and type `nvidia-smi -q | grep Architecture`
+4. The output will look like this:
+
+```bash
+    Product Architecture                  : Ampere
+```
+
+5. Therefore, for this GPU, the architecture is **Ampere** and the CUDA capability is **8.6**. And for pcms, you will write `AMPERE86`.
+
+## CUDA < 11.6
+
+1. Go to the terminal and type `nvidia-smi -q | grep "Product Architecture"`
 2. The output will look like this:
 
 ```bash
