@@ -23,6 +23,11 @@ This guide walks you through creating documentation for your SCOREC project.
 
 1. **Install Doxygen**
    - Install doxygen ([instructions](https://www.doxygen.nl/manual/install.html)) or use an existing installation.
+   - As of November 2025, on SCOREC systems the following commands will give you access to a Doxygen install:
+   ```
+   module use /opt/scorec/spack/rhel9/v0201_4/lmod/linux-rhel9-x86_64/Core/
+   module load gcc/12.3.0-iil3lno doxygen/1.9.6-5ppxahb
+   ```
 
 2. **Add Documentation Comments**
    - Use Doxygen comment syntax in your code. A simple example is like:
@@ -50,7 +55,13 @@ While Doxygen handles API documentation well, [Sphinx](https://www.sphinx-doc.or
 **Steps:**
 
 1. **Set Up Python Environment**
-  - An example environment from redev is like:
+```
+#/bin/bash
+python3 -m venv pyEnv
+source pyEnv/bin/activate
+pip install -r requirements.txt
+```
+  - An example `requirements.txt` environment from redev is:
 ```
 Sphinx==8.2.3
 sphinx-rtd-theme==3.0.2
@@ -69,11 +80,11 @@ breathe==4.35.0
    - Edit `docs/conf.py` to include Breathe extension
    - Point Breathe to your Doxygen XML output
    - Customize theme and settings
-   - Example can be found [here](https://github.com/Sichao25/redev/blob/main/docsDoxySphinx/conf.py).
+   - Example can be found [here](https://github.com/SCOREC/redev/blob/main/docsDoxySphinx/conf.py).
 
 4. **Create Content**
    - Write `.rst` files for guides, tutorials, and overview pages. Guide on `.rst` files can be found [here](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html).
-   - Use Breathe directives to include Doxygen-generated API docs. An example from redev can be found [here](https://github.com/Sichao25/redev/blob/main/docsDoxySphinx/api/cpp_doxygen_sphinx.rst?plain=1).
+   - Use Breathe directives to include Doxygen-generated API docs. An example from redev can be found [here](https://github.com/SCOREC/redev/blob/main/docsDoxySphinx/api/cpp_doxygen_sphinx.rst?plain=1).
 
 5. **Build Documentation**
 ```bash
@@ -96,7 +107,7 @@ GitHub Pages offers free, straightforward hosting directly from your repository.
 - Enable GitHub Pages in repository settings (source: `gh-pages` branch)
 - Documentation automatically updates on each push
 - Consider using a cron job instead of manual push
-- Example script available from [redev](https://github.com/Sichao25/redev/tree/main/docsDoxySphinx)
+- Example script available from [redev](https://github.com/SCOREC/redev/tree/main/docsDoxySphinx)
 
 **Option B: Deploy via GitHub Actions**
 - Create a workflow file (e.g. `.github/workflows/docs.yml`)
