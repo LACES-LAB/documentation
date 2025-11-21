@@ -55,7 +55,13 @@ While Doxygen handles API documentation well, [Sphinx](https://www.sphinx-doc.or
 **Steps:**
 
 1. **Set Up Python Environment**
-  - An example environment from redev is like:
+```
+#/bin/bash
+python3 -m venv pyEnv
+source pyEnv/bin/activate
+pip install -r requirements.txt
+```
+  - An example `requirements.txt` environment from redev is:
 ```
 Sphinx==8.2.3
 sphinx-rtd-theme==3.0.2
