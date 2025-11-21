@@ -69,11 +69,11 @@ breathe==4.35.0
    - Edit `docs/conf.py` to include Breathe extension
    - Point Breathe to your Doxygen XML output
    - Customize theme and settings
-   - Example can be found [here](https://github.com/Sichao25/redev/blob/main/docsDoxySphinx/conf.py).
+   - Example can be found [here](https://github.com/SCOREC/redev/blob/main/docsDoxySphinx/conf.py).
 
 4. **Create Content**
    - Write `.rst` files for guides, tutorials, and overview pages. Guide on `.rst` files can be found [here](https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html).
-   - Use Breathe directives to include Doxygen-generated API docs. An example from redev can be found [here](https://github.com/Sichao25/redev/blob/main/docsDoxySphinx/api/cpp_doxygen_sphinx.rst?plain=1).
+   - Use Breathe directives to include Doxygen-generated API docs. An example from redev can be found [here](https://github.com/SCOREC/redev/blob/main/docsDoxySphinx/api/cpp_doxygen_sphinx.rst?plain=1).
 
 5. **Build Documentation**
 ```bash
@@ -96,7 +96,7 @@ GitHub Pages offers free, straightforward hosting directly from your repository.
 - Enable GitHub Pages in repository settings (source: `gh-pages` branch)
 - Documentation automatically updates on each push
 - Consider using a cron job instead of manual push
-- Example script available from [redev](https://github.com/Sichao25/redev/tree/main/docsDoxySphinx)
+- Example script available from [redev](https://github.com/SCOREC/redev/tree/main/docsDoxySphinx)
 
 **Option B: Deploy via GitHub Actions**
 - Create a workflow file (e.g. `.github/workflows/docs.yml`)
