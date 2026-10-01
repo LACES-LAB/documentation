@@ -5,4 +5,39 @@ Nothing defined here. The Hugo project that uses this theme can override Bootstr
 assets/scss/_styles_project.scss
 
 */
-@import 'td/code-dark'
+@import 'td/code-dark';
+
+/* ── Pagefind search trigger ── */
+
+.td-search--pagefind {
+  cursor: pointer;
+}
+
+.td-search--pagefind .td-search__input {
+  cursor: pointer;
+  caret-color: transparent;
+}
+
+/* ── Pagefind modal theming ── */
+
+pagefind-modal {
+  --pf-border-radius: 0.5rem;
+}
+
+pagefind-modal[data-pf-theme="dark"] {
+  --pf-text: #e6edf3;
+  --pf-text-secondary: #b8c0cc;
+  --pf-text-muted: #8b949e;
+  --pf-background: #1a1d21;
+  --pf-border: #3a3033;
+  --pf-border-focus: #5a5a5a;
+  --pf-skeleton: #21262d;
+  --pf-skeleton-shine: #30363d;
+  --pf-hover: #21262d;
+  --pf-mark: #e6edf3;
+  --pf-scroll-shadow: rgba(255, 255, 255, 0.1);
+  --pf-outline-focus: #58a6ff;
+  --pf-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --pf-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --pf-shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
