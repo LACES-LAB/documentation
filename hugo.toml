@@ -131,7 +131,7 @@ version = "0.0"
 #github_branch= "main"
 
 # Google Custom Search Engine ID. Remove or comment out to disable search.
-gcs_engine_id = "30f1855429bcc475c"
+# gcs_engine_id = "30f1855429bcc475c"
 
 # Enable Algolia DocSearch
 algolia_docsearch = false
@@ -209,6 +209,12 @@ enable = false
 #  url = "https://example.org/mail"
 #  icon = "fa fa-envelope"
 #  desc = "Discuss development issues around the project"
+
+# Disable Node.js permission model (requires Node 20+; local dev uses Node 18)
+[security]
+  [security.node]
+    [security.node.permissions]
+      disable = true
 
 # hugo module configuration
 

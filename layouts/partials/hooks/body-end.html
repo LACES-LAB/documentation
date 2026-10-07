@@ -1,0 +1,62 @@
+{{/* Pagefind search modal and integration scripts.
+     bundle-path/base-url must be explicit: module scripts can't auto-detect
+     their location, so Pagefind would otherwise fall back to /pagefind/ and
+     ignore the /documentation/ subpath. */}}
+<pagefind-config bundle-path="{{ "pagefind/" | relURL }}" base-url="{{ site.Home.RelPermalink }}"></pagefind-config>
+<pagefind-modal id="search-modal"></pagefind-modal>
+
+<script>
+(function () {
+  'use strict';
+
+  var modal = document.getElementById('search-modal');
+  if (!modal) return;
+
+  function openSearch() {
+    if (typeof modal.open === 'function') {
+      modal.open();
+    }
+  }
+
+  /* ── Theme sync: mirror Docsy data-bs-theme → Pagefind data-pf-theme ── */
+  function syncPagefindTheme() {
+    var bsTheme = document.documentElement.getAttribute('data-bs-theme');
+    if (bsTheme === 'dark') {
+      modal.setAttribute('data-pf-theme', 'dark');
+    } else {
+      modal.removeAttribute('data-pf-theme');
+    }
+  }
+
+  var observer = new MutationObserver(syncPagefindTheme);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-bs-theme']
+  });
+  syncPagefindTheme();
+
+  /* ── Open modal from search triggers ── */
+  document.addEventListener('click', function (e) {
+    var trigger = e.target.closest('.td-search-pagefind');
+    if (trigger) {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+
+  document.addEventListener('focusin', function (e) {
+    if (e.target.closest('.td-search-pagefind')) {
+      e.target.blur();
+      openSearch();
+    }
+  });
+
+  /* ── Ctrl+K / Cmd+K keyboard shortcut ── */
+  document.addEventListener('keydown', function (e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+      e.preventDefault();
+      openSearch();
+    }
+  });
+})();
+</script>

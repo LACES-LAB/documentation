@@ -1,0 +1,7 @@
+exclude_selectors:
+  - ".td-navbar"
+  - ".td-sidebar"
+  - ".td-sidebar-toc"
+  - ".td-breadcrumbs"
+  - ".td-footer"
+  - "pagefind-modal"
